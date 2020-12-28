@@ -1,32 +1,68 @@
 "use.strict";
 
-// const str = "teSt";
-// const arr = [2, 5, 8];
+let numberOfFilms;
 
-// console.log(str[3]);
-// console.log(str.toUpperCase());
+function start() {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
 
-// console.log(str.toLowerCase());
-// console.log(str);
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+}
 
-// const fruit = "Some fruit";
+start();
 
-// console.log(fruit.indexOf("fruit"));
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
 
-// const logg = "Hello world";
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+              b = prompt('На сколько оцените его?', '');
+              
+        if (a != '' && b != '' && a != null && b != null && a.length < 50) {
+            personalMovieDB.movies[a] = b;
+            console.log('Good');
+        } else {
+            console.log('Error');
+            i--;
+        } 
+    }
+}
 
-// console.log(logg.slice(6, 11));
+// rememberMyFilms();
 
-// console.log(logg.substring(6, 11));
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10) {
+        console.log('Просмотрено довольно мало фильмов');
+    } else if (personalMovieDB.count > 30) {
+        console.log('Вы киноман');
+    } else if (personalMovieDB.count > 9 && personalMovieDB.count < 31) {
+        console.log('Вы классический зритель');
+    } else {
+        console.log('Произошла ошибка');
+    }
+}
 
-// console.log(logg.substr(6, 4));
+// detectPersonalLevel();
 
-const num = 12.2;
+function showMyDB (hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }    
+}
 
-console.log(Math.round(num));
+showMyDB(personalMovieDB.privat);
 
-const test = "12.2px";
+function writeYourGenres() {
+    for (let i = 1; i <= 3; i++) {
+        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
+    }
+}
 
-// console.log(parseInt(test));
-
-console.log(parseFloat(test));
+writeYourGenres();
