@@ -1,68 +1,44 @@
 "use.strict";
 
-let numberOfFilms;
-
-function start() {
-    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+const options = {
+    name: 'test',
+    width: 1024,
+    height: 1024,
+    colors: {
+        border: 'black',
+        bg: 'red'
+    },
+    makeTest: function() {
+        console.log('Test');
     }
-}
-
-start();
-
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
 };
 
-function rememberMyFilms() {
-    for (let i = 0; i < 2; i++) {
-        const a = prompt('Один из последних просмотренных фильмов?', ''),
-              b = prompt('На сколько оцените его?', '');
-              
-        if (a != '' && b != '' && a != null && b != null && a.length < 50) {
-            personalMovieDB.movies[a] = b;
-            console.log('Good');
-        } else {
-            console.log('Error');
-            i--;
-        } 
-    }
-}
+options.makeTest();
 
-// rememberMyFilms();
+const {border, bg} = options.colors;
 
-function detectPersonalLevel() {
-    if (personalMovieDB.count < 10) {
-        console.log('Просмотрено довольно мало фильмов');
-    } else if (personalMovieDB.count > 30) {
-        console.log('Вы киноман');
-    } else if (personalMovieDB.count > 9 && personalMovieDB.count < 31) {
-        console.log('Вы классический зритель');
-    } else {
-        console.log('Произошла ошибка');
-    }
-}
+console.log(border);
 
-// detectPersonalLevel();
+// console.log(Object.keys(options).length);
 
-function showMyDB (hidden) {
-    if (!hidden) {
-        console.log(personalMovieDB);
-    }    
-}
+// console.log(options.name);
 
-showMyDB(personalMovieDB.privat);
+// delete options.name;
 
-function writeYourGenres() {
-    for (let i = 1; i <= 3; i++) {
-        personalMovieDB.genres[i - 1] = prompt(`Ваш любимый жанр под номером ${i}`);
-    }
-}
+// console.log(options);
 
-writeYourGenres();
+// let counter = 0;
+
+// for (let key in options) {
+//     if (typeof(options[key]) === 'object') {
+//         for (let i in options[key]) {
+//             console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
+//             counter++;
+//         }
+//     } else {
+//     console.log(`Свойство ${key} имеет значение ${options[key]}`);
+//     counter++;
+//     }
+// }
+
+// console.log(counter);
