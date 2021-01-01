@@ -1,44 +1,37 @@
 "use.strict";
 
-const options = {
-    name: 'test',
-    width: 1024,
-    height: 1024,
-    colors: {
-        border: 'black',
-        bg: 'red'
-    },
-    makeTest: function() {
-        console.log('Test');
-    }
-};
+// const str = prompt("", "");
+// const products = str.split(", ");
+// products.sort();
+// console.log(products.join("; "));
 
-options.makeTest();
 
-const {border, bg} = options.colors;
 
-console.log(border);
+const arr = [10, 2, 38, 6, 18];
 
-// console.log(Object.keys(options).length);
+console.log(arr.sort(compareNum));
 
-// console.log(options.name);
+function compareNum(a, b) {
+    return a - b;
+}
 
-// delete options.name;
+// arr.forEach (function(item, i, arr) {
+//     console.log(`${i}: ${item} внутри массива ${arr}`);
+// });
 
-// console.log(options);
+// arr[99] = 0;
+// console.log(arr.length);
+// console.log(arr);
 
-// let counter = 0;
-
-// for (let key in options) {
-//     if (typeof(options[key]) === 'object') {
-//         for (let i in options[key]) {
-//             console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
-//             counter++;
-//         }
-//     } else {
-//     console.log(`Свойство ${key} имеет значение ${options[key]}`);
-//     counter++;
-//     }
+// for (let value of arr) {
+//     console.log(value);
 // }
 
-// console.log(counter);
+// for (let i = 0; i < arr.length; i++) {
+//     console.log(arr[i]);
+// }
+
+// arr.pop();
+// arr.push(12);
+
+// console.log(arr);
